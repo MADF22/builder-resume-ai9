@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Satoshi', sans-serif;
+}
+
+
+
+/* Responsive */
+
+@media only screen and (max-width: 600px) {
+  element__edit {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+  element__edit {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    flex: none;
+  }
+}
