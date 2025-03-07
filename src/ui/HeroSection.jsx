@@ -26,6 +26,7 @@ export default function HeroSection() {
           src={Image}
           alt="HeroImage"
           className="w-full max-w-md md:max-w-lg rounded-lg shadow-lg"
+          loading="lazy"
         />
       </div>
     </div>
