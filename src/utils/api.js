@@ -1,12 +1,14 @@
-export default async function handler(req, res) {
-  const API_KEY = process.env.VITE_OPENAI_API_KEY;
+const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+const BASE_URL = "https://api.openai.com/v1/chat/completions";
 
+export const getDeepseekResponse = async (prompt) => {
   if (!API_KEY) {
-    return res.status(500).json({ error: "API Key is missing!" });
+    console.error("API Key is missing! Check your .env file.");
+    return null;
   }
 
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch(BASE_URL, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${API_KEY}`,
@@ -14,18 +16,20 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: req.body.prompt }],
+        messages: [{ role: "user", content: prompt }],
       }),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      return res.status(response.status).json({ error: errorText });
+      throw new Error(
+        `HTTP error! Status: ${response.status}, Message: ${errorText}`,
+      );
     }
 
-    const data = await response.json();
-    return res.status(200).json(data);
+    return await response.json();
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    console.error("Error fetching data:", error);
+    return null;
   }
-}
+};
