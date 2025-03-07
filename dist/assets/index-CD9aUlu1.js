@@ -37386,17 +37386,20 @@ function ei() {
             Z = je(Bs);
           return (
             R(function () {
-              return c.scroll(function (fe) {
-                var de = fe.x,
-                  le = fe.y;
-                Z.scrollX.set(de.current),
-                  Z.scrollXProgress.set(de.progress),
-                  Z.scrollY.set(le.current),
-                  Z.scrollYProgress.set(le.progress);
-              }, t.__assign(t.__assign({}, q), {
-                container: (U == null ? void 0 : U.current) || void 0,
-                target: (H == null ? void 0 : H.current) || void 0,
-              }));
+              return c.scroll(
+                function (fe) {
+                  var de = fe.x,
+                    le = fe.y;
+                  Z.scrollX.set(de.current),
+                    Z.scrollXProgress.set(de.progress),
+                    Z.scrollY.set(le.current),
+                    Z.scrollYProgress.set(le.progress);
+                },
+                t.__assign(t.__assign({}, q), {
+                  container: (U == null ? void 0 : U.current) || void 0,
+                  target: (H == null ? void 0 : H.current) || void 0,
+                }),
+              );
             }, []),
             Z
           );
@@ -87258,7 +87261,7 @@ hr.API.PDFObject = (function () {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "gpt-3.5-turbo",
+          model: "gpt-4o-mini",
           messages: [{ role: "user", content: e }],
         }),
       });

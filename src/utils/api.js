@@ -3,7 +3,7 @@ const BASE_URL = "https://api.openai.com/v1/chat/completions";
 
 export const getDeepseekResponse = async (prompt) => {
   if (!API_KEY) {
-    console.error("API Key is missing! Check your .env file or Vercel environment variables.");
+    console.error("API Key is missing! Check your .env file.");
     return null;
   }
 
@@ -15,7 +15,7 @@ export const getDeepseekResponse = async (prompt) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model: "gpt-4o",
         messages: [{ role: "user", content: prompt }],
       }),
     });
