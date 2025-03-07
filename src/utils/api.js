@@ -15,7 +15,11 @@ export const getDeepseekResponse = async (prompt) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+<<<<<<< HEAD
         model: "gpt-4o",
+=======
+        model: "gpt-4o-mini",
+>>>>>>> af17b10317bc03463fa9d23c32ff723108c860a8
         messages: [{ role: "user", content: prompt }],
       }),
     });
