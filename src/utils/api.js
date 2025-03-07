@@ -1,4 +1,4 @@
-const API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+const API_KEY = process.env.VITE_OPENAI_API_KEY;
 const BASE_URL = "https://api.openai.com/v1/chat/completions";
 
 export const getDeepseekResponse = async (prompt) => {
